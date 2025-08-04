@@ -5,7 +5,7 @@ type Args = {
   context: typeof context;
 };
 
-export default async function ({ github, context }: Args) {
+export async function script({ github, context }: Args) {
   const pullRequestId = context.payload.pull_request?.number;
   if (pullRequestId == null) {
     return;
