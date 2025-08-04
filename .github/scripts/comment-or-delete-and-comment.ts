@@ -17,11 +17,11 @@ export async function script({ github, context }: Args) {
     issue_number: pullRequestId,
   });
 
-  const existingComment = comments.find((comment) =>
-    comment.body_text?.includes('<!-- comment-id: xxxxx -->'),
+  const existingComments = comments.filter((comment) =>
+    comment.body?.includes('<!-- comment-id: xxxxx -->'),
   );
 
-  if (existingComment) {
+  for (const existingComment of existingComments) {
     await github.rest.issues.deleteComment({
       owner: context.repo.owner,
       repo: context.repo.repo,
