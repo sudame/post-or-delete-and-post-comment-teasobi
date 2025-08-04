@@ -1,0 +1,21 @@
+{
+  "name": "post-or-delete-and-post-comment-teasobi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "@biomejs/biome": "^2.1.3",
+    "@tsconfig/strictest": "^2.0.5",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  }
+}

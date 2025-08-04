@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  comment-or-delete-and-comment:
+    runs-on: ubuntu-22.04
+    permissions: 
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: '22'
+      - run: npm ci
+      - uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            import { tsImport } from 'tsx/esm/api';
+            const script = await tsImport('.github/scripts/comment-or-delete-and-comment.ts', import.meta.url);
+            await script({ github, context });
