@@ -18,6 +18,6 @@ jobs:
       - uses: actions/github-script@v7.0.1
         with:
           script: |
-            import { tsImport } from 'tsx/esm/api';
-            const script = await tsImport('.github/scripts/comment-or-delete-and-comment.ts', import.meta.url);
+            const { tsImport } = await import('${{ github.workspace }}/node_modules/tsx/dist/esm/api/index.cjs');
+            const { script } = await tsImport('./.github/scripts/comment-or-delete-and-comment.ts', '${{ github.workspace }}/');
             await script({ github, context });
